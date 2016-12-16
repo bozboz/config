@@ -13,6 +13,8 @@ class Config implements ConfigContract
     {
         if (Schema::hasTable('site_config')) {
             $this->config = ConfigValue::pluck('value', 'alias');
+        } else {
+            $this->config = collect();
         }
     }
 
