@@ -12,4 +12,4 @@
 
 `app('siteConfig')->get('<alias>')`
 
-All views have access to a `$config` variable. Can be used like: `{{ $config->get('<alias>')`
+All views have access to a `$config` variable. Can be used like: `{{ $config->get('<alias>') }}`
