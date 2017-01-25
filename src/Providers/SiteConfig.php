@@ -25,6 +25,10 @@ class SiteConfig extends ServiceProvider
             return new Config;
         });
 
+        $this->publishes([
+            __DIR__.'/../../database/migrations/' => database_path('migrations')
+        ], 'migrations');
+
         view()->share('config', $this->app['siteConfig']);
     }
 
@@ -45,7 +49,7 @@ class SiteConfig extends ServiceProvider
         $this->app['events']->listen('admin.renderMenu', function($menu)
         {
             if ($menu->gate('view_site_config')) {
-                $menu->addTopLevelItem('Config', 'admin.config.index');
+                $menu->appendToItem('Config', ['Config' => 'admin.config.index']);
             }
         }, -1);
     }
