@@ -12,7 +12,7 @@ class ConfigValue extends Model
 	protected $fillable = [
 		'name',
 		'alias',
-		'value'
+		'value',
 	];
 
 	protected $nullable = ['value'];
@@ -25,5 +25,10 @@ class ConfigValue extends Model
 	public function generateAlias($instance)
 	{
 		$instance->alias = str_slug($instance->name, '_');
+	}
+
+	public function tags()
+	{
+		return $this->belongsToMany(Tag::class, 'site_config_values_tags');
 	}
 }

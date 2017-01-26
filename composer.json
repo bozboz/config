@@ -1,5 +1,11 @@
 {
     "name": "bozboz/config",
+    "authors": [
+        {
+            "name": "Jim Hollington",
+            "email": "jim@oddvalue.co.uk"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Bozboz\\Config\\": "src/"

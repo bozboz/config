@@ -3,11 +3,13 @@
 namespace Bozboz\Config;
 
 use Bozboz\Admin\Base\ModelAdminDecorator;
+use Bozboz\Admin\Fields\BelongsToManyField;
 use Bozboz\Admin\Fields\CheckboxField;
 use Bozboz\Admin\Fields\MediaBrowser;
 use Bozboz\Admin\Fields\TextField;
 use Bozboz\Admin\Fields\TextareaField;
 use Bozboz\Admin\Media\Media;
+use Bozboz\Admin\Reports\Filters\MultiOptionListingFilter;
 use Bozboz\Permissions\Facades\Gate;
 use Bozboz\Permissions\RuleStack;
 
@@ -41,7 +43,25 @@ class ConfigValueAdminDecorator extends ModelAdminDecorator
             ]),
             $canCreate && $instance->exists ? new TextField('alias') : null,
             new TextareaField('value'),
+            $canCreate ? new BelongsToManyField($this, $instance->tags(), [
+                'key' => 'name',
+                'data-tags' => 'true',
+            ]) : null,
         ]);
+    }
+
+    public function getListingFilters()
+    {
+        return [
+            new MultiOptionListingFilter('tags', $this->model->tags()->getModel()->lists('name', 'id')->all()),
+        ];
+    }
+
+    public function getListRelations()
+    {
+        return [
+            'tags' => 'name'
+        ];
     }
 
     protected function canCreate()
