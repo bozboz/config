@@ -24,7 +24,7 @@ class ConfigValue extends Model
 
 	public function generateAlias($instance)
 	{
-		$instance->alias = str_slug($instance->name, '_');
+		$instance->alias = str_slug($instance->name);
 	}
 
 	public function tags()
