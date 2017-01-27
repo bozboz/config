@@ -14,11 +14,15 @@ class Config implements ConfigContract
     {
         if (Schema::hasTable('site_config')) {
             $this->config = ConfigValue::pluck('value', 'alias');
+        } else {
+            $this->config = collect();
+        }
+
+        if (Schema::hasTable('site_config_tags')) {
             $this->tags = Tag::with('config')->get()->pluck('config', 'name')->map(function($config) {
                 return $config->pluck('value', 'alias');
             });
         } else {
-            $this->config = collect();
             $this->tags = collect();
         }
     }
