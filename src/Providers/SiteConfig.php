@@ -25,6 +25,8 @@ class SiteConfig extends ServiceProvider
             return new Config;
         });
 
+        $this->app->instance(Config::class, $this->app['siteConfig']);
+
         $this->publishes([
             __DIR__.'/../../database/migrations/' => database_path('migrations')
         ], 'migrations');

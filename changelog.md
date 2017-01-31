@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.1.2 (Future)
+- Add instance of Config class to service container for dependancy injection
+
 ## Version 1.1.1 (2017-01-27)
 - Fix error when upgrading from 1.0 to 1.1
 
