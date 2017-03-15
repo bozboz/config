@@ -25,6 +25,17 @@ class ConfigValueAdminDecorator extends ModelAdminDecorator
         return $instance->name;
     }
 
+    /**
+     * @param  int  $id
+     * @return Bozboz\Admin\Base\ModelInterface
+     */
+    public function findInstance($id)
+    {
+        return parent::findInstance($id)->load(['history' => function($query) {
+            $query->latest();
+        }]);
+    }
+
     public function getColumns($instance)
     {
         return array_filter([

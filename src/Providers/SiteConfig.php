@@ -31,6 +31,8 @@ class SiteConfig extends ServiceProvider
             __DIR__.'/../../database/migrations/' => database_path('migrations')
         ], 'migrations');
 
+        $this->loadViewsFrom(__DIR__."/../../resources/views", 'site-config');
+
         view()->share('config', $this->app['siteConfig']);
     }
 

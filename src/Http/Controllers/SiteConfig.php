@@ -8,6 +8,7 @@ use Bozboz\Config\ConfigValueAdminDecorator;
 class SiteConfig extends ModelAdminController
 {
     protected $useActions = true;
+    protected $editView = 'site-config::admin.edit';
 
     public function __construct(ConfigValueAdminDecorator $decorator)
     {
