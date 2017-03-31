@@ -15,8 +15,8 @@ class CreateConfigHistory extends Migration
         Schema::create('site_config_history', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('config_id');
-            $table->text('old');
-            $table->text('new');
+            $table->text('old')->nullable();
+            $table->text('new')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
 
