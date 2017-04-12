@@ -31,7 +31,7 @@ class ConfigValue extends Model
 
 	public function logHistory($instance)
 	{
-		if ($instance->isDirty()) {
+		if ($instance->isDirty('value')) {
 			$instance->load('tags');
 			$old = $instance->getOriginal();
 			$instance->history()->create([

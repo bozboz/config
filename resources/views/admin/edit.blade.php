@@ -6,14 +6,12 @@
         <h3 style="clear:both;">Revision History</h3>
         <table class="table">
             <tr>
-                <th>Old</th>
-                <th>New</th>
+                <th>Value</th>
                 <th>User</th>
                 <th>When</th>
             </tr>
         @foreach ($model->history as $revision)
             <tr>
-                <td><del>{!!nl2br(e($revision->old))!!}</del></td>
                 <td>{!!nl2br(e($revision->new))!!}</td>
                 <td>{{$revision->user_name}}</td>
                 <td>
