@@ -40,7 +40,7 @@ class SiteConfig extends ServiceProvider
     {
         $this->app['permission.handler']->define([
 
-            'view_site_config' => 'Bozboz\Permissions\Rules\Rule',
+            'view_site_config' => 'Bozboz\Permissions\Rules\GlobalRule',
             'create_site_config' => 'Bozboz\Permissions\Rules\Rule',
             'delete_site_config' => 'Bozboz\Permissions\Rules\Rule',
             'edit_site_config' => 'Bozboz\Permissions\Rules\Rule',
