@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.2.0 (Future)
+## Version 1.2.0 (2017-05-04)
 - Add instance of Config class to service container for dependancy injection
 - Add revision history
 
