@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.1 (2017-06-26)
+- Load config on demand rather than every app run
+- Add caching to config
+
 ## Version 1.2.0 (2017-05-04)
 - Add instance of Config class to service container for dependancy injection
 - Add revision history

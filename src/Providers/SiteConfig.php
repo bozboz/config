@@ -34,6 +34,10 @@ class SiteConfig extends ServiceProvider
         $this->loadViewsFrom(__DIR__."/../../resources/views", 'site-config');
 
         view()->share('config', $this->app['siteConfig']);
+
+        $this->app['events']->listen('eloquent.saved: Bozboz\Config\ConfigValue', function() {
+            $this->app['siteConfig']->clearCache();
+        });
     }
 
     protected function registerPermissions()

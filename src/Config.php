@@ -2,38 +2,50 @@
 
 namespace Bozboz\Config;
 
-use Illuminate\Support\Facades\Schema;
 use Bozboz\Config\ConfigContract;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 
 class Config implements ConfigContract
 {
     protected $config;
     protected $tags;
 
-    public function __construct()
+    public function clearCache()
     {
-        if (Schema::hasTable('site_config')) {
-            $this->config = ConfigValue::pluck('value', 'alias');
-        } else {
-            $this->config = collect();
-        }
-
-        if (Schema::hasTable('site_config_tags')) {
-            $this->tags = Tag::with('config')->get()->pluck('config', 'name')->map(function($config) {
-                return $config->pluck('value', 'alias');
-            });
-        } else {
-            $this->tags = collect();
-        }
+        Cache::forget('siteConfig:config');
+        Cache::forget('siteConfig:tags');
     }
 
     public function get($alias)
     {
+        if ( ! $this->config) {
+            $this->loadConfig();
+        }
         return $this->config->get($alias);
     }
 
     public function tag($tag)
     {
+        if ( ! $this->tags) {
+            $this->loadTags();
+        }
         return $this->tags->get($tag);
+    }
+
+    private function loadConfig()
+    {
+        $this->config = Cache::rememberForever('siteConfig:config', function() {
+            return ConfigValue::pluck('value', 'alias');
+        });
+    }
+
+    private function loadTags()
+    {
+        $this->tags = Cache::rememberForever('siteConfig:tags', function() {
+            return Tag::with('config')->get()->pluck('config', 'name')->map(function($config) {
+                return $config->pluck('value', 'alias');
+            });
+        });
     }
 }
