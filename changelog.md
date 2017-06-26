@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.2.1 (2017-06-26)
+## Version 1.3.0 (2017-06-26)
 - Load config on demand rather than every app run
 - Add caching to config
 
