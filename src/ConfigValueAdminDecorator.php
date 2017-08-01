@@ -41,7 +41,7 @@ class ConfigValueAdminDecorator extends ModelAdminDecorator
         return array_filter([
             'Name' => $instance->name,
             'Alias' => $this->canCreate() ? $instance->alias : null,
-            'Value' => str_limit(e($instance->value))
+            'Value' => str_limit(e($instance->value)) ?: ' '
         ]);
     }
 

@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.3.1 (Future)
+- Prevent empty config values messing up admin listing
+
 ## Version 1.3.0 (2017-06-26)
 - Load config on demand rather than every app run
 - Add caching to config
