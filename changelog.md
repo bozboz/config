@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.3.1 (Future)
+## Version 1.3.1 (2017-10-03)
 - Prevent empty config values messing up admin listing
 
 ## Version 1.3.0 (2017-06-26)
