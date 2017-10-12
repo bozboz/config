@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.4.0 (Future)
+- Add `BozConfig` Facade
+
 ## Version 1.3.1 (2017-10-03)
 - Prevent empty config values messing up admin listing
 
