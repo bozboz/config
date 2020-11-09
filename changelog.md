@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.4.0 (Future)
+## Version 1.4.0 (2020-11-09)
 - Add `BozConfig` Facade
 
 ## Version 1.3.1 (2017-10-03)
