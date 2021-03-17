@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.5.0 (2020-11-09)
+- Allow different field types for config value
+
 ## Version 1.4.0 (2020-11-09)
 - Add `BozConfig` Facade
 
