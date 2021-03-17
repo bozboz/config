@@ -11,5 +11,8 @@ class Facade extends Base
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'siteConfig'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'siteConfig';
+    }
 }

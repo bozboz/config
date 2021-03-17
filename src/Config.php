@@ -19,7 +19,7 @@ class Config implements ConfigContract
 
     public function get($alias)
     {
-        if ( ! $this->config) {
+        if (! $this->config) {
             $this->loadConfig();
         }
         return $this->config->get($alias);
@@ -27,7 +27,7 @@ class Config implements ConfigContract
 
     public function tag($tag)
     {
-        if ( ! $this->tags) {
+        if (! $this->tags) {
             $this->loadTags();
         }
         return $this->tags->get($tag);
@@ -35,15 +35,15 @@ class Config implements ConfigContract
 
     private function loadConfig()
     {
-        $this->config = Cache::rememberForever('siteConfig:config', function() {
+        $this->config = Cache::rememberForever('siteConfig:config', function () {
             return ConfigValue::pluck('value', 'alias');
         });
     }
 
     private function loadTags()
     {
-        $this->tags = Cache::rememberForever('siteConfig:tags', function() {
-            return Tag::with('config')->get()->pluck('config', 'name')->map(function($config) {
+        $this->tags = Cache::rememberForever('siteConfig:tags', function () {
+            return Tag::with('config')->get()->pluck('config', 'name')->map(function ($config) {
                 return $config->pluck('value', 'alias');
             });
         });

@@ -31,7 +31,7 @@ class ConfigValueAdminDecorator extends ModelAdminDecorator
      */
     public function findInstance($id)
     {
-        return parent::findInstance($id)->load(['history' => function($query) {
+        return parent::findInstance($id)->load(['history' => function ($query) {
             $query->latest();
         }]);
     }

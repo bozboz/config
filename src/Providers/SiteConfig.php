@@ -21,7 +21,7 @@ class SiteConfig extends ServiceProvider
         $this->registerPermissions();
         $this->adminMenu();
 
-        $this->app->singleton('siteConfig', function($app) {
+        $this->app->singleton('siteConfig', function ($app) {
             return new Config;
         });
 
@@ -35,7 +35,7 @@ class SiteConfig extends ServiceProvider
 
         view()->share('config', $this->app['siteConfig']);
 
-        $this->app['events']->listen('eloquent.saved: Bozboz\Config\ConfigValue', function() {
+        $this->app['events']->listen('eloquent.saved: Bozboz\Config\ConfigValue', function () {
             $this->app['siteConfig']->clearCache();
         });
     }
@@ -54,8 +54,7 @@ class SiteConfig extends ServiceProvider
 
     protected function adminMenu()
     {
-        $this->app['events']->listen('admin.renderMenu', function($menu)
-        {
+        $this->app['events']->listen('admin.renderMenu', function ($menu) {
             if ($menu->gate('view_site_config')) {
                 $menu->appendToItem('Config', ['Config' => 'admin.config.index']);
             }
