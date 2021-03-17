@@ -53,12 +53,21 @@ class ConfigValueAdminDecorator extends ModelAdminDecorator
                 'disabled' => ! $canCreate ? 'disabled' : null,
             ]),
             $canCreate && $instance->exists ? new TextField('alias') : null,
-            new TextareaField('value'),
+            $this->valueField($instance),
             $canCreate ? new BelongsToManyField($this, $instance->tags(), [
                 'key' => 'name',
                 'data-tags' => 'true',
             ]) : null,
         ]);
+    }
+
+    private function valueField($instance)
+    {
+        if (! $instance->field_type) {
+            return new TextareaField('value');
+        }
+        $field = $instance->field_type;
+        return new $field('value');
     }
 
     public function getListingFilters()
