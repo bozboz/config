@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 1.5.0 (2020-11-09)
+## Version 1.5.0 (2021-03-17)
 - Allow different field types for config value
 
 ## Version 1.4.0 (2020-11-09)
