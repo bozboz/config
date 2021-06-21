@@ -17,12 +17,12 @@ class Config implements ConfigContract
         Cache::forget('siteConfig:tags');
     }
 
-    public function get($alias)
+    public function get($alias = null)
     {
         if (! $this->config) {
             $this->loadConfig();
         }
-        return $this->config->get($alias);
+        return $alias ? $this->config->get($alias) : $this->config;
     }
 
     public function tag($tag)

@@ -1,5 +1,8 @@
 # Changelog
 
+## Version 1.6.0 (2021-06-22)
+- Add config to default Laravel config
+
 ## Version 1.5.0 (2021-03-17)
 - Allow different field types for config value
 
