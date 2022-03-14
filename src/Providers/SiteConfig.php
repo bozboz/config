@@ -38,10 +38,6 @@ class SiteConfig extends ServiceProvider
         $this->app['events']->listen('eloquent.saved: Bozboz\Config\ConfigValue', function () {
             $this->app['siteConfig']->clearCache();
         });
-
-        config([
-            'settings' => $this->app['siteConfig']->get()->all()
-        ]);
     }
 
     protected function registerPermissions()
